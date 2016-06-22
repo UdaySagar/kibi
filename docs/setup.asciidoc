@@ -1,0 +1,76 @@
+[[setup]]
+== Setup
+
+Download and install Java 1.7 or greater from https://java.com/en/download/; if
+you're on a GNU/Linux distribution, install Java through your package manager.
+
+After Java has been installed, make sure that the `java` command is available
+in the system path by opening a terminal window and running `java -version`;
+the command should display the version of Java installed on your system.
+
+Download the Kibi binary distribution from http://siren.solutions/kibi and
+extract it to a local directory.
+
+To start the Elasticsearch cluster included in the distribution, open a
+terminal window, change to the directory where you extracted Kibi and run
+the following command:
+
+[source,shell]
+elastic/bin/elasticsearch
+
+If you're on Windows, run the following command:
+
+[source,shell]
+elastic\bin\elasticsearch.bat
+
+To start Kibi, open a second terminal window, change to the directory where you
+extracted Kibi and run the following command:
+
+[source,shell]
+kibi/bin/kibi
+
+If you're on Windows, run the following command:
+
+[source,shell]
+kibi\bin\kibi.bat
+
+Upon first launch, the Windows firewall might display the following dialog
+box; to allow the Kibi backend to connect to external datasources, please
+check both check boxes (as shown below) and press the *Allow access* button.
+
+image::images/node-windows-firewall-warning.png["Windows firewall warning",align="center"]
+
+Kibi can be accessed by visiting http://localhost:5602/; an overview of the
+included demo dataset is available in <<getting-started, Getting started>>
+section.
+
+If you want to connect Kibi to a different Elasticsearch cluster, open
+the configuration file in `kibi/config/kibi.yml`, set the correct URL in
+the `elasticsearch_url` parameter, then restart Kibi.
+
+[float]
+[[kibi-dynamic-mapping]]
+=== Kibi and Elasticsearch Dynamic Mapping
+By default, Elasticsearch enables  {elastic-ref}mapping-dynamic-mapping.html[dynamic mapping] for fields.
+Kibi needs dynamic mapping to use fields in visualizations correctly, as well
+as to manage the `.kibi` index where all its configuration is stored.
+
+If your Elasticsearch use case requires you to disable dynamic mapping, you
+need to manually provide mappings for fields that Kibi uses to create
+visualizations.
+
+You also need to manually enable dynamic mapping for the `.kibi` index.
+
+The following procedure assumes that the `.kibi` index does not already exist
+in Elasticsearch and that the `index.mapper.dynamic` setting in
+`elasticsearch.yml` is set to `false`:
+
+- Start Elasticsearch.
+
+- Create the `.kibi` index with dynamic mapping enabled:
+
+[source,shell]
+curl -X PUT <your Elasticsearch URL>/.kibi -d '{ "index.mapper.dynamic": true }'
+
+- Start Kibi, open the UI in your browser and verify that there are no
+error messages related to dynamic mapping.

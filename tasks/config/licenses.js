@@ -1,0 +1,61 @@
+module.exports = function (grunt) {
+  return {
+    options: {
+      licenses: [
+        'MIT',
+        'MIT*',
+        'MIT/X11',
+        'new BSD, and MIT',
+        'BSD',
+        'BSD*',
+        'BSD New',
+        'BSD-like',
+        'BSD-2-Clause',
+        'BSD-3-Clause',
+        'Apache',
+        'Apache*',
+        'Apache v2',
+        'Apache 2.0',
+        'Apache2',
+        'Apache-2.0',
+        'Apache, Version 2.0',
+        'ISC',
+        'WTFPL',
+        'Public-Domain'
+      ],
+      overrides: {
+        'FileSaver@undefined': ['MIT'],
+        'angular-bootstrap@0.10.0': ['MIT'],
+        'angular-ui-ace@0.2.3': ['MIT'],
+        'assert-plus@0.1.5': ['MIT'],
+        'bluebird@2.9.33': ['MIT'],
+        'chalk@1.1.0': ['MIT'],
+        'commander@2.2.0': ['MIT'],
+        'cycle@1.0.3': ['Public-Domain'],
+        'debug@0.7.4': ['MIT'],
+        'is-my-json-valid@2.12.0': ['MIT'],
+        'jsonpointer@1.1.0': ['MIT'],
+        'leaflet@0.7.2': ['BSD-2-Clause'],
+        'minimatch@2.0.8': ['ISC'],
+        'moment-timezone@0.0.6': ['MIT'],
+        'ng-tags-input@2.3.0': ['MIT'],
+        'pkginfo@0.2.3': ['MIT'],
+        'rc@1.0.3': ['MIT'],
+        'uglify-js@2.2.5': ['BSD'],
+        'zeroclipboard@2.2.0': ['MIT'],
+        'amdefine@0.1.1': ['BSD-3-Clause', 'MIT'],
+        'amdefine@1.0.0': ['BSD-3-Clause', 'MIT'],
+        'jison@0.4.13': ['MIT'],
+        'JSONSelect@0.4.0': ['MIT'],
+        'nomnom@1.5.2': ['MIT'],
+        'process-nextick-args@1.0.3': ['MIT'],
+        'util-deprecate@1.0.2': ['MIT'],
+        'is-my-json-valid@2.12.1': ['MIT'],
+        'rc@1.1.0': ['MIT'],
+        'rc@1.1.1': ['MIT'],
+        'ansi@0.3.0': ['MIT'],
+        'bluebird@2.10.0': ['MIT']
+      }
+    }
+  };
+};

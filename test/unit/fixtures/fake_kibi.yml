@@ -1,0 +1,2 @@
+datasource_encryption_algorithm: 'AES-GCM'
+datasource_encryption_key: 'JhWzsL2ZrgiaPjv+sHtMIPSDxu3yfPvNqMSQoEectxo='

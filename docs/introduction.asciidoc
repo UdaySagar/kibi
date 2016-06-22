@@ -1,0 +1,57 @@
+[[introduction]]
+== Introduction
+
+Kibi is an open source data intelligence platform built upon
+https://www.elastic.co/products/kibana[Kibana 4.1.4].
+
+Kibi allows to perform complex analytics on large volumes of data by providing
+customizable visualizations (charts, maps, metrics and tables) on Elasticsearch
+queries; visualizations can be organized into multiple dashboards, presented
+in a tabbed user interface.
+
+Elasticsearch results can be filtered and augmented by queries on multiple
+external datasources such as SQL databases and triplestores; queries on
+external datasources can also be used as aggregations in visualizations.
+
+In addition to standard Kibana visualizations, Kibi provides:
+
+- The <<relational-filter, Kibi Relational filter>> visualization, which allows
+to configure relations between fields in different indices and apply
+cross-dashboard filters (pivoting).
+
+- The <<wordcloud,Kibi Word Cloud>> visualization, which displays a cloud of
+high frequency terms from the documents returned by an Elasticsearch query.
+
+- The <<timeline,Kibi Timeline>> visualization, which displays a timeline
+with multiple groups of data coming from different indexes.
+
+- The <<enhanced-search-results,Enhanced search results>> visualization, which
+displays query results in a table.
+
+- The <<templated-query-viewer,Templated Query Viewer>>, which enables the
+visualization of queries on external datasource through Jade or Handlebars
+templates.
+
+The Kibi Relational filter visualization requires the Siren 2.0 plugin for
+Elasticsearch, which is currently available as a pre-release in the
+`lib\es-filter-join.zip` directory; the plugin is compatible with Elasticsearch
+1.6 and 1.7.
+
+[float]
+=== How does Kibi compare to Kibana?
+
+Kibi is currently developed as a fork of Kibana 4.1; we're looking
+forward to make use of the plugin API coming in Kibana 4.2 to keep the amount
+of forked code to a minimum.
+
+=== What's new in Kibi v{kibi-version}
+
+This new version of Kibi provides many improvements and new features, the main one are listed below:
+
+- Kibi is merged with Kibana 4.1.4 which provides a number of https://www.elastic.co/blog/kibana-4-3-1-and-4-2-2-and-4-1-4[bug fixes and performance improvments].
+- A new <<relational-panel,relational browsing>> feature and an improved interactive <<relational-filter,join construction>>.
+- A new <<timeline,timeline>> visualisation.
+- The <<relational-filter,relational filtering>> is more expressive.
+- The <<external-datasources>> are now configured through the Kibi user interface.
+- A REST endpoint can now be added as an <<external-datasources,external datasource>>.
+- The test coverage of Kibi has been significantly increased.
