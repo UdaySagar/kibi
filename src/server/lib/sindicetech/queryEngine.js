@@ -355,9 +355,9 @@ var replaceWith = query['config']['resultQuery'].match(/\@(.*?)\@(.*?)\$/)[2];
 var original_query = query['config']['resultQuery'];
 
 
-//if( query['config']['resultQuery'].match(/\@(.*?)\@/)[0] == "ReplaceWith") {
-//  query['config']['resultQuery'] = query['config']['resultQuery'].replace(match(/\@(.*?)\@/), "Drug");  
-//}
+if( query['config']['resultQuery'].match(/\@(.*?)\@/)[0] == "ReplaceWith") {
+  query['config']['resultQuery'] = query['config']['resultQuery'].replace(match(/\@(.*?)\@/), "Drug");  
+}
         if(options.replaceText && options.replaceWith) {
           var replaceWith = query['config']['resultQuery'].match(/\@(.*?)\@(.*?)\$/)[2];
           query['config']['resultQuery'] = query['config']['resultQuery'].replace("@tobereplaced@", "Drug");  
