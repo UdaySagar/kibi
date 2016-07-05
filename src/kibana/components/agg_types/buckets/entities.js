@@ -19,8 +19,13 @@ define(function (require) {
           default: [ {input: {}} ],
           write: function (aggConfig, output) {
             var inFilters = aggConfig.params.filters;
+            //console.log(output);
+            var inTags = aggConfig.params.ngtags;
             if (!_.size(inFilters)) return;
+//console.log(document.getElementsByName('ngtags0'));
 
+//console.log(jQuery('[name="ngtags0"] ul.tag-list li span.ng-binding.ng-scope'));
+var i =0;
             var outFilters = _.transform(inFilters, function (filters, filter) {
               var input = filter.input;
               //var tagsjson = angular.fromJson(filter.input.tags);
@@ -28,32 +33,40 @@ define(function (require) {
               if (!input) return notif.log('malformed filter agg params, missing "input" query');
 
               var query = input.query;
-
+var semantic_siblings = [];
+$.each( jQuery('[name="ngtags'+i+'"] ul.tag-list li span.ng-binding.ng-scope'), function( key, value ) {
+  semantic_siblings.push(value.innerText );
+});
               //input.query = { query_string: { query: entityQueries.join(' AND ') } };              
               //input.query = { query_string: { query: tags.join(" OR ") } };   
-              var tags = input.tags;
+              //var tags = input.ngtags;
+              //alert(tags);
+//console.log(filter);
               //var tagsLabel = _.deepGet(tags, '0.text')               
 
               if (!query) return notif.log('malformed filter agg params, missing "query" on input');
               decorateQuery(query);
               
-              var log = [];
+              //var log = [];
 
-              angular.forEach(tags, function(value, key) {
-                  this.push(value.text);
-              }, log);
+              //angular.forEach(tags, function(value, key) {
+                  //this.push(value.text);
+              //}, log);
 
-              console.log(log.join(' OR '));
-              _.deepSet(query, 'query_string.query', log.join(" OR "));
+              //console.log(log.join(' OR '));
+              _.deepSet(query, 'query_string.query', '"' + semantic_siblings.join('" OR "') + '"');
               //_.deepSet(query, 'query_string.query', "good OR nice");
 
 
              //_.remove(filter.input.tags);
              delete filter.input.tags;
+             //delete filter.input.tags1;             
+             //delete tags.input.ngtags;
 
-              var label = log.join(", ");
-                                          console.log(input);
+              var label = semantic_siblings.join(", ");
+              //console.log(input);
               filters[label] = input;
+              i++;
             }, {});
 
            
